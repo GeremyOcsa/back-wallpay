@@ -11,7 +11,7 @@ app.listen(app.get('port'), () => {
 })
 
 app.use(cors({
-  origin: ['http://127.0.0.1:5500']
+  origin: ['http://127.0.0.1:5500', 'https://sistema.clinica-flores.com/']
 }))
 
 app.get('/registros', async (req, res) => {

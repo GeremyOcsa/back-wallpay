@@ -1,9 +1,11 @@
 const express = require('express')
 const database = require('./db')
 const cors = require('cors')
+const dotenv = require('dotenv')
+dotenv.config()
 
 const app = express()
-app.set('port', process.env.PORT || 3000)
+app.set('port', process.env.PORT)
 app.listen(app.get('port'), () => {
   console.log('Server is running on port', app.get('port'))
 })

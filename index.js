@@ -8,7 +8,7 @@ const app = express()
 const PORT = process.env.PORT || 3000
 
 app.use(cors({
-  origin: ['https://sistema.clinica-flores.com', 'http://127.0.0.1:5500'],
+  origin: ['https://sistema.clinica-flores.com', 'http://127.0.0.1:5500', 'https://geremyocsa.github.io'],
   allowedHeaders: ['Content-Type'],
   credentials: true
 }))

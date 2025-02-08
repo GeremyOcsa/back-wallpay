@@ -10,7 +10,9 @@ router.get('/apellidos', async (req, res) => {
 
   try {
     const [result] = await database.query(
-      'SELECT * FROM registros WHERE apellidoPaterno LIKE ? AND apellidoMaterno LIKE ?',
+      `SELECT numero_registro, dni, nombre, apellidoPaterno, apellidoMaterno, sexo, 
+      DATE_FORMAT(fecha_nacimiento, '%Y-%m-%d') AS fecha_nacimiento, telefono
+      FROM registros WHERE apellidoPaterno LIKE ? AND apellidoMaterno LIKE ?`,
       [paterno, materno]
     )
     res.json(result)
@@ -25,7 +27,10 @@ router.get('/dni', async (req, res) => {
   const documento = `%${DNI}%`
 
   try {
-    const [result] = await database.query('SELECT * FROM registros WHERE dni LIKE ?', [documento])
+    const [result] = await database.query(
+      `SELECT numero_registro, dni, nombre, apellidoPaterno, apellidoMaterno, sexo, 
+      DATE_FORMAT(fecha_nacimiento, '%Y-%m-%d') AS fecha_nacimiento, telefono
+      FROM registros WHERE dni LIKE ?`, [documento])
     res.json(result)
   } catch (error) {
     res.status(500).json({ message: 'Internal server error', error: error.message })
